@@ -24,6 +24,10 @@ ohai 'reload_nginx' do
   action :nothing
 end
 
+directory "#{node['ohai']['plugin_path']}" do
+  recursive true
+end
+
 template "#{node['ohai']['plugin_path']}/nginx.rb" do
   source 'plugins/nginx.rb.erb'
   owner  'root'
